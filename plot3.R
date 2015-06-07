@@ -1,15 +1,15 @@
 #Importing Data to create graph
 
 
-#converting energy sub metering to numeric
-Import_Consumption$Sub_metering_1 <- as.numeric(as.character(Import_Consumption$Sub_metering_1))
-Import_Consumption$Sub_metering_2 <- as.numeric(as.character(Import_Consumption$Sub_metering_2))
-Import_Consumption$Sub_metering_3 <- as.numeric(as.character(Import_Consumption$Sub_metering_3))
-
 #joining date and time
 Import_Consumption$DateTime <- paste(Import_Consumption$Date,Import_Consumption$Time)
 #converting date and time to DateTime POSIXct
 Import_Consumption$DateTime <- as.POSIXct(strptime(Import_Consumption$DateTime, "%d/%m/%Y %H:%M:%S"))
+
+#converting energy sub metering to numeric
+Import_Consumption$Sub_metering_1 <- as.numeric(as.character(Import_Consumption$Sub_metering_1))
+Import_Consumption$Sub_metering_2 <- as.numeric(as.character(Import_Consumption$Sub_metering_2))
+Import_Consumption$Sub_metering_3 <- as.numeric(as.character(Import_Consumption$Sub_metering_3))
 
 #creating plot
 with(Import_Consumption,plot(DateTime,Sub_metering_1,main="",type="n",xlab="",ylab="Energy sub meeting"))
